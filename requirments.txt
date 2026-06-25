@@ -1,0 +1,8 @@
+twilio
+Fastapi 
+uvicorn
+google-genai
+websockets
+python-dotenv
+python-multipart
+pyngrok
