@@ -3,6 +3,7 @@ import logging
 import threading
 from dotenv import load_dotenv
 from fastapi import FastAPI, Request, WebSocket, WebSocketDisconnect
+from app.recorder.pipeline import init_pipeline
 from app.telephony.twilio_client import make_twilio_call
 from app.telephony.twilio_handler import TwilioHandler
 
@@ -66,6 +67,7 @@ async def startup_event():
         logger.info(f"Ngrok started for AUTO_CALL with Twilio Media URL: {media_ws_url}")
         print(f"Ngrok started for AUTO_CALL with Twilio Media URL: {media_ws_url}")
 
+    init_pipeline()
     auto_call = parse_env_flag("AUTO_CALL")
     to_number = os.environ.get("TWILIO_TO_NUMBER")
     from_number = os.environ.get("TWILIO_FROM_NUMBER")

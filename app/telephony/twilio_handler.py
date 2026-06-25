@@ -3,8 +3,11 @@ import base64
 import json
 import logging
 import audioop
+import time
 from app.llm.gemini_client import GeminiLive
 from app.agents.patient_agent import get_patient_scenario
+from app.recorder.recorder import CallRecorder
+from app.recorder.pipeline import launch_pipeline_for_call
 
 logger = logging.getLogger(__name__)
 
@@ -21,6 +24,7 @@ class TwilioHandler:
     async def handle_media_stream(self, websocket):
         """Processes the Twilio Media Stream."""
         audio_input_queue = asyncio.Queue()
+        recorder = None
 
         # Buffer for accumulating output audio before sending to Twilio
         # Twilio works best with consistent 20ms frames (160 bytes of mulaw at 8kHz)
@@ -28,6 +32,7 @@ class TwilioHandler:
         output_buffer = bytearray()
 
         # Keep resampling state between chunks for cleaner audio
+        resample_state_8_to_16 = None
         resample_state_24_to_16 = None
         resample_state_16_to_8 = None
         
@@ -69,7 +74,7 @@ class TwilioHandler:
         async def audio_output_callback(data):
             """Callback for Gemini audio output."""
             nonlocal output_buffer
-            logger.debug(f"audio_output_callback invoked, raw PCM24k chunk size={len(data)} bytes")
+            logger.info(f"[{time.time():.3f}] audio_output_callback chunk size={len(data)} bytes")
             if not self.stream_sid:
                 # This used to fail silently, which made it impossible to tell
                 # "Gemini never sent audio" apart from "Gemini sent audio before
@@ -97,6 +102,8 @@ class TwilioHandler:
                 mulaw_data = audioop.lin2ulaw(resampled_data, 2)
 
                 logger.debug(f"Converted Gemini output to {len(mulaw_data)} bytes of mulaw")
+                if recorder:
+                    recorder.add_agent_audio(mulaw_data)
                 # Buffer and send in consistent frame sizes
                 output_buffer.extend(mulaw_data)
                 await send_buffered_audio(websocket, self.stream_sid)
@@ -107,6 +114,9 @@ class TwilioHandler:
             """Callback for Gemini audio interruption."""
             nonlocal output_buffer
             output_buffer.clear()  # Discard buffered audio
+            logger.info(f"[{time.time():.3f}] Gemini audio interrupted; cleared output buffer")
+            if recorder:
+                recorder.interrupt_agent_audio()
             if self.stream_sid:
                 # Clear Twilio's buffer
                 await websocket.send_text(json.dumps({
@@ -137,6 +147,8 @@ class TwilioHandler:
                 if event == "start":
                     self.stream_sid = data["start"]["streamSid"]
                     call_sid = data["start"].get("callSid", "unknown")
+                    recorder = CallRecorder(call_sid=call_sid)
+                    recorder.start()
                     logger.info(f"Twilio Stream started — streamSid={self.stream_sid}, callSid={call_sid}")
                     logger.info(f"Stream metadata: {json.dumps(data['start'], indent=2)}")
                     logger.info(f"Patient scenario active: {patient_scenario.scenario_type}")
@@ -144,10 +156,18 @@ class TwilioHandler:
                 elif event == "media":
                     payload = data["media"]["payload"]
                     mulaw_data = base64.b64decode(payload)
+                    track = data["media"].get("track", "").lower()
+                    if recorder and track and "outbound" in track:
+                        logger.debug(f"Skipping Twilio outbound audio track {track} in recorder")
+                    elif recorder:
+                        recorder.add_caller_audio(mulaw_data, int(data["media"]["timestamp"]))
+
                     # Convert mulaw to PCM (8kHz)
                     pcm_data = audioop.ulaw2lin(mulaw_data, 2)
                     # Two-step resampling: 8kHz → 16kHz (clean 1:2 ratio)
-                    resampled_data, _ = audioop.ratecv(pcm_data, 2, 1, 8000, 16000, None)
+                    resampled_data, resample_state_8_to_16 = audioop.ratecv(
+                        pcm_data, 2, 1, 8000, 16000, resample_state_8_to_16
+                    )
                     await audio_input_queue.put(resampled_data)
                 elif event == "stop":
                     logger.info(f"Twilio Stream stopped: {self.stream_sid}")
@@ -164,6 +184,13 @@ class TwilioHandler:
                     if exc:
                         logger.error(f"Gemini task failed with exception: {exc}", exc_info=exc)
                 gemini_task.cancel()
+            if recorder:
+                try:
+                    audio_path = recorder.finalize()
+                    launch_pipeline_for_call(recorder.call_sid, audio_path)
+                    logger.info("Call %s recording saved to %s", recorder.call_sid, audio_path)
+                except Exception:
+                    logger.exception("Failed to finalize or launch pipeline for call %s", recorder.call_sid)
             logger.info("Twilio handler finished — cleaning up")
 
     async def _run_gemini_session(self, audio_input_queue, output_callback, interrupt_callback, system_prompt=None, initial_text=None):
