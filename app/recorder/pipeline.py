@@ -30,6 +30,7 @@ import logging
 from datetime import datetime, timezone
 from pathlib import Path
 from google import genai
+from google.genai import types
 
 logger = logging.getLogger("call_pipeline")
 
@@ -108,7 +109,13 @@ async def transcribe_call(call_sid: str, audio_path: str) -> str:
             raise FileNotFoundError(f"Audio file does not exist: {audio_file}")
 
         with audio_file.open("rb") as file_obj:
-            uploaded_file = client.files.upload(file=file_obj)
+            uploaded_file = client.files.upload(
+                file=file_obj,
+                config=types.UploadFileConfig(
+                    mime_type="audio/wav",
+                    display_name=audio_file.name,
+                ),
+            )
 
         # Gemini processes uploaded files asynchronously (state starts as
         # PROCESSING). Poll until ACTIVE before referencing it in generate_content,
