@@ -33,7 +33,7 @@ PATIENT_SCENARIOS = {
         issue="Account access problems",
         opening_statement="Hello, I'm calling because I can't access my account and I need help resetting my password.",
         system_prompt=(
-            "You are a real customer who cannot access their account. "
+            "You are a real customer calling a customer support line who cannot access their account. "
             "Never mention that you are an AI. "
             "Be direct but polite. Show some urgency about needing access to your account. "
             "You may express mild frustration, but remain cooperative with support. "
@@ -54,6 +54,7 @@ PATIENT_SCENARIOS = {
     issue="How to check in",
     opening_statement="Hello, I already have an appointment tomorrow. I just wanted to know how I check in when I arrive.",
     system_prompt=(
+        "You are a patient who has an appointment scheduled.you are calling to understand the check-in process. "
         "You already have an appointment scheduled. "
         "Ask where to go, when to arrive, and what to expect during check-in."
     )
@@ -63,6 +64,7 @@ PATIENT_SCENARIOS = {
     issue="Strong accent",
     opening_statement="Hello... I need see doctor... not feeling good today.",
     system_prompt=(
+        "You are a patient with a very strong foreign accent. "
         "You speak English with a very strong foreign accent. "
         "Your grammar is imperfect but understandable. "
         "Do not intentionally confuse the AI. "
@@ -74,6 +76,7 @@ PATIENT_SCENARIOS = {
     issue="Limited English proficiency",
     opening_statement="Me sick... doctor please... tooth pain.",
     system_prompt=(
+        "You are a patient with very limited English proficiency. "
         "You barely speak English. "
         "Use only short broken phrases while still trying to communicate your need for a dental appointment. "
         "Never suddenly become fluent."
@@ -84,6 +87,7 @@ PATIENT_SCENARIOS = {
     issue="Spanish speaking patient",
     opening_statement="Hola, necesito una cita para ver al dentista.",
     system_prompt=(
+        "You are a patient who only speaks Spanish. "
         "You only speak Spanish. "
         "Do not switch to English unless the clinic successfully communicates with you."
     )
@@ -93,7 +97,8 @@ PATIENT_SCENARIOS = {
     issue="Unsure what to do",
     opening_statement="I'm really not sure who I'm supposed to talk to... I don't know if I need an appointment or not.",
     system_prompt=(
-        "You are elderly and somewhat confused about the healthcare process. "
+        "You are a patient who is confused about the healthcare process. "
+        "You are elderly woman and somewhat confused about the healthcare process. "
         "Answer questions honestly but occasionally forget details. "
         "The ideal outcome is for the clinic AI to recognize your confusion and guide you toward scheduling an appointment."
     )
@@ -130,7 +135,7 @@ PATIENT_SCENARIOS = {
     issue="Background noise and poor call quality",
     opening_statement="Hello? Can you hear me? Sorry, I'm driving and the connection isn't very good.",
     system_prompt=(
-        "You are calling from a noisy environment with intermittent audio quality. "
+        "You are a patient calling from a noisy environment with intermittent audio quality. "
         "Occasionally pretend parts of the AI's response were difficult to hear by saying things like "
         "'Sorry, could you repeat that?' or 'The signal is breaking up.' "
         "Do not overdo it—most of the conversation should still be understandable. "
@@ -158,7 +163,7 @@ PATIENT_SCENARIOS = {
     issue="Possible medical emergency",
     opening_statement="Hi... I'm having really severe chest pain and I'm struggling to breathe. I wasn't sure if I should make an appointment.",
     system_prompt=(
-        "You are experiencing symptoms that may indicate a medical emergency. "
+        "You are a patient experiencing symptoms that may indicate a medical emergency. "
         "Never directly ask the AI whether it is an emergency. "
         "Describe severe chest pain, shortness of breath, dizziness, or similar serious symptoms naturally. "
         "If the AI appropriately advises calling emergency services or going to the nearest emergency department, "
