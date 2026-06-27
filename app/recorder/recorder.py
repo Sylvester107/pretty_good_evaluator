@@ -24,6 +24,7 @@ import wave
 import os
 import numpy as np
 from threading import Lock
+from pydub import AudioSegment
 
 # Project-local default output folder for recordings.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -46,9 +47,10 @@ AGENT_TURN_GAP_SECONDS = 1.0
 
 
 class CallRecorder:
-    def __init__(self, call_sid: str, output_dir: str = DEFAULT_OUTPUT_DIR):
+    def __init__(self, call_sid: str, output_dir: str = DEFAULT_OUTPUT_DIR, scenario_issue: str = "unknown"):
         self.call_sid = call_sid
         self.output_dir = output_dir
+        self.scenario_issue = "_".join(scenario_issue.split())  # sanitize spaces for filename
         os.makedirs(output_dir, exist_ok=True)
 
         self._lock = Lock()
@@ -150,6 +152,12 @@ class CallRecorder:
             self._agent_cursor_sample += len(samples)
 
         self._write_at(start_sample, samples)
+    def convert_to_mp3(self, wav_path: str) -> str:
+
+        audio = AudioSegment.from_wav(wav_path)
+        mp3_path = wav_path.replace(".wav", ".mp3")
+        audio.export(mp3_path, format="mp3")
+        return mp3_path
 
     def interrupt_agent_audio(self):
         """
@@ -181,8 +189,11 @@ class CallRecorder:
             wf.writeframes(clipped.tobytes())
         wav_buffer.seek(0)
 
-        wav_path = os.path.join(self.output_dir, f"{self.call_sid}.wav")
+        wav_path = os.path.join(self.output_dir, f"{self.scenario_issue}.wav")
         with open(wav_path, "wb") as f:
             f.write(wav_buffer.getvalue())
+            #convert to mp3
+            mp3_path = self.convert_to_mp3(wav_path)
 
-        return wav_path
+
+        return mp3_path

@@ -97,7 +97,7 @@ Do not add commentary, summaries, or analysis -- transcript text only.
 async def transcribe_call(call_sid: str, audio_path: str) -> str:
     """
     Uploads the call audio file to Gemini and returns a speaker-labeled transcript.
-    Writes the transcript to TRANSCRIPTS_DIR/{call_sid}.txt and returns that path.
+    Writes the transcript to TRANSCRIPTS_DIR/{file_name}.txt and returns that path.
     """
     client = _get_client()
 
@@ -112,7 +112,7 @@ async def transcribe_call(call_sid: str, audio_path: str) -> str:
             uploaded_file = client.files.upload(
                 file=file_obj,
                 config=types.UploadFileConfig(
-                    mime_type="audio/wav",
+                    mime_type="audio/mpeg",  # MP3
                     display_name=audio_file.name,
                 ),
             )
@@ -135,7 +135,7 @@ async def transcribe_call(call_sid: str, audio_path: str) -> str:
 
     transcript_text = await asyncio.to_thread(_do_transcription)
 
-    transcript_path = os.path.join(TRANSCRIPTS_DIR, f"{call_sid}.txt")
+    transcript_path = os.path.join(TRANSCRIPTS_DIR, f"{os.path.basename(audio_path).split('.')[0]}.txt")
     with open(transcript_path, "w", encoding="utf-8") as f:
         f.write(transcript_text)
 
@@ -196,7 +196,7 @@ async def analyze_call(call_sid: str, transcript_path: str) -> str:
 
     analysis_text = await asyncio.to_thread(_do_analysis)
 
-    analysis_path = os.path.join(ANALYSIS_DIR, f"{call_sid}.txt")
+    analysis_path = os.path.join(ANALYSIS_DIR, f"{os.path.basename(transcript_path).split('.')[0]}.txt")
     with open(analysis_path, "w", encoding="utf-8") as f:
         f.write(analysis_text)
 

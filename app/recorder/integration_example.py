@@ -56,7 +56,7 @@ async def media_stream(websocket: WebSocket):
                 mulaw_bytes = base64.b64decode(msg["media"]["payload"])
 
                 if recorder:
-                    recorder.add_caller_audio(mulaw_bytes)
+                    recorder.add_caller_audio(mulaw_bytes, twilio_timestamp_ms=msg["media"]["timestamp"])
 
                 # --- your existing forward-to-Gemini code goes here ---
                 # await gemini_session.send_audio(mulaw_bytes)
