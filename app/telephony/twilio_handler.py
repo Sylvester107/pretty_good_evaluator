@@ -2,6 +2,7 @@ import asyncio
 import base64
 import json
 import logging
+import os
 import audioop
 import time
 from app.llm.gemini_client import GeminiLive
@@ -12,14 +13,15 @@ from app.recorder.pipeline import launch_pipeline_for_call
 logger = logging.getLogger(__name__)
 
 class TwilioHandler:
-    def __init__(self, gemini_api_key, model):
+    def __init__(self, gemini_api_key, model, default_scenario: str | None = None):
         self.gemini_client = GeminiLive(
             api_key=gemini_api_key,
             model=model,
             input_sample_rate=16000
         )
         self.stream_sid = None
-        logger.info(f"TwilioHandler initialized with model={model}")
+        self.default_scenario = default_scenario or os.environ.get("PATIENT_SCENARIO", "heavy_accent")
+        logger.info(f"TwilioHandler initialized with model={model} and scenario={self.default_scenario}")
 
     async def handle_media_stream(self, websocket):
         """Processes the Twilio Media Stream."""
@@ -35,10 +37,14 @@ class TwilioHandler:
         resample_state_8_to_16 = None
         resample_state_24_to_16 = None
         resample_state_16_to_8 = None
+        conversation_timeout_seconds = 180
+        conversation_started_at = None
+        last_activity_at = None
         
         # Initialize patient scenario (will be updated when stream starts)
-        patient_scenario = get_patient_scenario("billing_issue")
+        patient_scenario = get_patient_scenario(self.default_scenario)
         system_prompt = patient_scenario.system_prompt
+        scenario_issue=patient_scenario.issue
 
         async def send_buffered_audio(websocket, stream_sid, flush: bool = False):
             """Send buffered audio in consistent 160-byte (20ms) mulaw frames."""
@@ -147,13 +153,21 @@ class TwilioHandler:
                 if event == "start":
                     self.stream_sid = data["start"]["streamSid"]
                     call_sid = data["start"].get("callSid", "unknown")
-                    recorder = CallRecorder(call_sid=call_sid)
+                    recorder = CallRecorder(call_sid=call_sid, scenario_issue=scenario_issue)
                     recorder.start()
+                    conversation_started_at = time.time()
+                    last_activity_at = conversation_started_at
                     logger.info(f"Twilio Stream started — streamSid={self.stream_sid}, callSid={call_sid}")
                     logger.info(f"Stream metadata: {json.dumps(data['start'], indent=2)}")
                     logger.info(f"Patient scenario active: {patient_scenario.scenario_type}")
                     await start_gemini_session_if_needed()
                 elif event == "media":
+                    now = time.time()
+                    if conversation_started_at is not None and (now - conversation_started_at) >= conversation_timeout_seconds:
+                        logger.info("Conversation reached %s seconds; ending Twilio stream", conversation_timeout_seconds)
+                        await send_buffered_audio(websocket, self.stream_sid, flush=True)
+                        break
+
                     payload = data["media"]["payload"]
                     mulaw_data = base64.b64decode(payload)
                     track = data["media"].get("track", "").lower()
@@ -168,6 +182,7 @@ class TwilioHandler:
                     resampled_data, resample_state_8_to_16 = audioop.ratecv(
                         pcm_data, 2, 1, 8000, 16000, resample_state_8_to_16
                     )
+                    last_activity_at = now
                     await audio_input_queue.put(resampled_data)
                 elif event == "stop":
                     logger.info(f"Twilio Stream stopped: {self.stream_sid}")
