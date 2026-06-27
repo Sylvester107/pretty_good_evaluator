@@ -4,51 +4,7 @@ call_recorder/recorder.py
 Records a Twilio <Connect><Stream> call as a single interleaved/mixed WAV file.
 
 Design (v3 — fixes long pauses, echo/garbling, caller-side static, AND the
-agent cursor going stale across both barge-in interrupts and normal turn ends):
-- The original version placed every chunk at `time.monotonic() - start_time`,
-  i.e. whenever your server happened to get around to processing it. Any
-  processing delay (async scheduling, Gemini API latency, event-loop jitter)
-  got baked into the recording as extra silence -> long pauses that didn't
-  really happen on the call. Under load, two chunks could also race to compute
-  their position and land at overlapping/out-of-order offsets -> echo/garbling
-  and crackly static.
-- Fix (v2): stop using wall-clock arrival time for POSITIONING audio.
-    * Caller audio: Twilio sends an authoritative `timestamp` field (ms since
-      stream start) on every `media` event. We use THAT as the write position,
-      not whenever our code happens to run. This is immune to server-side delay.
-    * Agent audio: this is audio *we* generate/stream, so there's no Twilio
-      timestamp for it. Position is tracked as cumulative playback time: each
-      chunk is placed immediately after the previous agent chunk ends, based
-      on the chunk's own decoded duration. Bursty delivery from Gemini can't
-      cause overlapping writes, because position comes from audio content,
-      not from when the network/event loop delivered it.
-- Fix (v3): the agent cursor still needs to "catch up" to the caller's timeline
-  at the START of every new agent turn -- not just after a barge-in interrupt.
-  v2 only resynced the cursor when an explicit interrupt callback fired, which
-  missed the much more common case: Gemini finishes a turn normally
-  (turn_complete, no interrupt), there's a multi-second gap while the caller
-  talks and Gemini is silent, and then Gemini's NEXT turn starts. With no
-  interrupt to trigger a resync, the cursor just resumed from where the
-  previous (fully-played) turn ended -- ignoring however much real time had
-  passed while only the caller was talking. That produced agent audio that
-  sounded continuous/never-stopping in the recording, overlapping the
-  caller's speech, because there was no per-turn boundary to anchor against.
-    * Fix: detect a new agent turn automatically, by tracking how long it's
-      been (wall-clock) since the last agent chunk was written. If a gap of
-      AGENT_TURN_GAP_SECONDS or more has elapsed, treat the next agent chunk
-      as the start of a new turn and resync the cursor to the latest known
-      caller timestamp before placing it. This covers BOTH a barge-in
-      interrupt AND a normal turn_complete-then-silence-then-next-turn cycle,
-      since both look identical from the recorder's point of view: a gap in
-      agent audio delivery, of unknown cause, followed by new agent audio.
-      interrupt_agent_audio() is kept as an optional immediate signal (skips
-      waiting for the gap timer), but the gap-based detection is now the
-      primary mechanism and works correctly even if no interrupt ever fires.
-- Overlapping audio (both talking at once) is summed with clipping -> a true mix.
-- At the end of the call we write the buffer to a WAV file. WAV is a playable,
-  self-describing container and avoids MP3 extension/codec mismatches.
-
-REQUIRES: none beyond Python stdlib audio support for WAV.
+agent cursor going stale across both barge-in interrupts and normal turn ends)
 
 Usage:
     recorder = CallRecorder(call_sid="CAxxxx")
