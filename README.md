@@ -8,7 +8,8 @@ This repository demonstrates a complete pipeline for evaluating a voice assistan
 
 - Accepts inbound or outbound Twilio media streams over WebSocket
 - Connects the stream to Gemini Live for conversational AI responses
-- Records the full mixed audio call locally as a WAV file
+- Records the full mixed audio call locally and encodes it with ffmpeg
+- Supports selecting a patient scenario from the command line (for example, billing issues, accent testing, or emergency cases)
 - Transcribes the conversation into a speaker-labeled transcript
 - Analyzes the transcript for issues such as misunderstanding, looping, poor timing, or abrupt failures
 - Writes outputs into the data folder for later review and debugging
@@ -27,6 +28,8 @@ This repository demonstrates a complete pipeline for evaluating a voice assistan
 - Real-time Twilio media streaming support
 - Gemini Live voice conversation integration
 - Automatic call recording with mixed audio timing fixes
+- Command-line scenario selection for patient personas
+- Automatic call shutdown after roughly 3 minutes of conversation
 - Transcript generation with speaker labels and timestamps
 - Structured bug analysis from call transcripts
 - Optional automatic outbound calls via Twilio on startup
@@ -37,6 +40,7 @@ This repository demonstrates a complete pipeline for evaluating a voice assistan
 - Python 3.10+
 - A Gemini API key
 - A Twilio account and phone number (if you want to place or receive live calls)
+- FFmpeg binaries installed and available on your PATH for audio encoding
 - Optional: ngrok account token for public tunneling
 
 ## Installation
@@ -47,6 +51,32 @@ From the repository root:
 python -m venv .venv
 source .venv/bin/activate  # On Windows use .venv\Scripts\activate
 pip install -r requirments.txt
+```
+
+Install FFmpeg so the recorder can encode audio files correctly:
+
+Windows (Chocolatey):
+
+```powershell
+choco install ffmpeg
+```
+
+macOS (Homebrew):
+
+```bash
+brew install ffmpeg
+```
+
+macOS (MacPorts):
+
+```bash
+sudo port install ffmpeg
+```
+
+After installation, verify that the `ffmpeg` command is available:
+
+```bash
+ffmpeg -version
 ```
 
 ## Environment configuration
@@ -85,8 +115,18 @@ Start the server:
 
 ```bash
 python scripts/start_server.py
-python main.py 
+python main.py
 ```
+
+You can also choose a specific patient scenario from the command line:
+
+```bash
+python main.py billing_issue
+# or
+python main.py --scenario heavy_accent
+```
+
+The Twilio connection will automatically end after roughly 3 minutes of conversation unless the stream is stopped earlier.
 
 This launches the FastAPI app and exposes:
 
@@ -134,6 +174,7 @@ tests/          Example and integration tests
 - Ensure GEMINI_API_KEY is set before starting the app.
 - If Twilio audio is not flowing correctly, verify the media WebSocket URL matches the public endpoint.
 - If ngrok fails, confirm NGROK_AUTH_TOKEN is configured and the tunnel port is reachable.
+- If ffmpeg is missing, install the binary and ensure `ffmpeg` is on your PATH.
 - If the pipeline fails after recording, inspect the generated transcript or bug report files in the data folder.
 
 ## Notes
