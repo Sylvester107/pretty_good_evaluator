@@ -37,7 +37,7 @@ class TwilioHandler:
         resample_state_8_to_16 = None
         resample_state_24_to_16 = None
         resample_state_16_to_8 = None
-        conversation_timeout_seconds = 180
+        conversation_timeout_seconds = 240
         conversation_started_at = None
         last_activity_at = None
         
