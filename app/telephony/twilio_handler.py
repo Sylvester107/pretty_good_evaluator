@@ -20,7 +20,7 @@ class TwilioHandler:
             input_sample_rate=16000
         )
         self.stream_sid = None
-        self.default_scenario = default_scenario or os.environ.get("PATIENT_SCENARIO", "heavy_accent")
+        self.default_scenario = (default_scenario if default_scenario is not None else os.environ.get("PATIENT_SCENARIO")) or "heavy_accent"
         logger.info(f"TwilioHandler initialized with model={model} and scenario={self.default_scenario}")
 
     async def handle_media_stream(self, websocket):

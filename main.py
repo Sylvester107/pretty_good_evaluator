@@ -33,9 +33,9 @@ def _parse_runtime_args():
 
     parser = argparse.ArgumentParser(add_help=True)
     parser.add_argument("scenario_positional", nargs="?", default=None)
-    parser.add_argument("--scenario", dest="scenario", default=os.environ.get("PATIENT_SCENARIO", "heavy_accent"))
+    parser.add_argument("--scenario", dest="scenario", default=None)
     args = parser.parse_args(normalized)
-    return args.scenario or args.scenario_positional or os.environ.get("PATIENT_SCENARIO", "heavy_accent")
+    return (args.scenario if args.scenario is not None else args.scenario_positional) or os.environ.get("PATIENT_SCENARIO") or "heavy_accent"
 
 
 runtime_scenario = _parse_runtime_args()
