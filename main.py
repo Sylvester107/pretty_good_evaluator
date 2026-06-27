@@ -1,4 +1,6 @@
+import argparse
 import os
+import sys
 import logging
 import threading
 from dotenv import load_dotenv
@@ -16,12 +18,35 @@ logger = logging.getLogger(__name__)
 app = FastAPI()
 
 
+def _parse_runtime_args():
+    argv = list(sys.argv[1:])
+    normalized = []
+    for token in argv:
+        if token.startswith("--") and "=" not in token and token != "--help":
+            name = token[2:]
+            if name and name != "scenario":
+                normalized.extend(["--scenario", name])
+            else:
+                normalized.append(token)
+        else:
+            normalized.append(token)
+
+    parser = argparse.ArgumentParser(add_help=True)
+    parser.add_argument("scenario_positional", nargs="?", default=None)
+    parser.add_argument("--scenario", dest="scenario", default=os.environ.get("PATIENT_SCENARIO", "heavy_accent"))
+    args = parser.parse_args(normalized)
+    return args.scenario or args.scenario_positional or os.environ.get("PATIENT_SCENARIO", "heavy_accent")
+
+
+runtime_scenario = _parse_runtime_args()
+os.environ["PATIENT_SCENARIO"] = runtime_scenario
+
 gemini_api_key = os.environ.get("GEMINI_API_KEY")
 if not gemini_api_key:
     raise RuntimeError("GEMINI_API_KEY environment variable is required")
 
 gemini_model = os.environ.get("GEMINI_MODEL", "gemini-3.1-flash-live-preview")
-telephony_handler = TwilioHandler(gemini_api_key=gemini_api_key, model=gemini_model)
+telephony_handler = TwilioHandler(gemini_api_key=gemini_api_key, model=gemini_model, default_scenario=runtime_scenario)
 
 # expose call to start a call to a phone number using Twilio API
 @app.post("/twilio/call")
