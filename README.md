@@ -126,6 +126,22 @@ python main.py billing_issue
 python main.py --scenario heavy_accent
 ```
 
+Supported scenario names:
+
+- billing_issue
+- account_issue
+- clinic_location
+- checkin_process
+- heavy_accent
+- broken_english
+- spanish_patient
+- confused_patient
+- multiple_questions
+- memory_test
+- poor_call_quality
+- frustrated_patient
+- medical_emergency
+
 The Twilio connection will automatically end after roughly 3 minutes of conversation unless the stream is stopped earlier.
 
 This launches the FastAPI app and exposes:
