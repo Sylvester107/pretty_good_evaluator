@@ -88,25 +88,16 @@ cp .env.example .env
 ```
 
 Required variables:
-
 ```env
-GEMINI_API_KEY=your_gemini_api_key
-TWILIO_ACCOUNT_SID=your_twilio_sid
-TWILIO_AUTH_TOKEN=your_twilio_auth_token
-TWILIO_FROM_NUMBER=+15551234567
-TWILIO_TO_NUMBER=+15557654321
-TWILIO_MEDIA_WS_URL=ws://your-server/twilio/media
-```
-
-Optional variables:
-
-```env
-GEMINI_MODEL=gemini-3.1-flash-live-preview
-AUTO_CALL=false
-ENABLE_NGROK=false
-NGROK_AUTH_TOKEN=your_ngrok_token
-SERVER_HOST=0.0.0.0
-SERVER_PORT=8000
+GEMINI_API_KEY=
+GEMINI_MODEL(optional)=
+TWILIO_ACCOUNT_SID=
+TWILIO_AUTH_TOKEN=
+TWILIO_MEDIA_WS_URL(optional)=  #if ngrok is set to True this will update automatically
+TWILIO_FROM_NUMBER=
+TWILIO_TO_NUMBER=
+ENABLE_NGROK=True
+NGROK_AUTH_TOKEN= 
 ```
 
 ## Running the app locally
@@ -114,7 +105,6 @@ SERVER_PORT=8000
 Start the server:
 
 ```bash
-python scripts/start_server.py
 python main.py
 ```
 
