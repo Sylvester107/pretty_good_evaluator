@@ -43,18 +43,11 @@ class GeminiLive:
             system_instruction=types.Content(
                 parts=[types.Part(
                     text=system_prompt
-                    or "You are a helpful AI assistant. Keep your responses concise. Speak in a friendly Irish accent."
+                    or "You are a helpful AI. Keep your responses concise. Speak in a friendly Irish accent."
                 )]
             ),
             input_audio_transcription=types.AudioTranscriptionConfig(),
             output_audio_transcription=types.AudioTranscriptionConfig(),
-            # NOTE: this is the fix for "Gemini hears me but never responds".
-            # On telephony-quality audio (8kHz mulaw -> 16kHz PCM, lossy/noisy),
-            # the server's default VAD sensitivity frequently never commits an
-            # end-of-speech, so turn_complete/model_turn never fire even though
-            # input_transcription keeps coming through. Loosening start/end
-            # sensitivity and giving a slightly longer silence window makes the
-            # server far more reliable about actually closing the user's turn.
             realtime_input_config=types.RealtimeInputConfig(
                 automatic_activity_detection=types.AutomaticActivityDetection(
                     disabled=False,
