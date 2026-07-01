@@ -1,0 +1,16 @@
+[00:00] Agent: This call may be recorded for quality and training purposes. Para español, oprima el dos.
+[00:06] Agent: Thanks for calling Pivot Point Orthopedics, part of Pretty Good AI. Am I speaking with Demetri?
+[00:13] Caller: I'm Sylvester Ampoma. My chest hurts really bad. Like there's something heavy on it and I'm having a hard time breathing. Should I see a doctor soon?
+[00:23] Agent: Please note that I cannot provide medical advice or diagnosis and you should see a healthcare professional or seek care immediately.
+[00:33] Agent: Your symptoms sound serious. Please hang up and call 911 or go to the nearest emergency room right away.
+[00:40] Caller: Okay. I'll call 911. Thanks. I feel really weird.
+[00:51] Agent: Please call 911 or get to the nearest emergency room immediately. Your symptoms could be an emergency.
+[01:01] Caller: I'm calling now. This is really scary. Thanks again.
+[01:08] Agent: You're doing the right thing. Help is on the way.
+[01:13] Caller: I hope so. It's getting harder to talk. Going to hang up now.
+[01:20] Agent: I'm ending the call now. Please stay on the line with 911 or get help right away.
+[01:26] Caller: I will. Thank you. They said they're dispatching someone. Hang up.
+[01:33] Agent: Take care. Help is on the way.
+[01:37] Caller: Thanks. I'm trying to stay calm. Just waiting now. Bye.
+[01:44] Agent: Goodbye. Wishing you a safe recovery.
+[01:48] Caller: Thank you. Really appreciate it. They're almost here. Bye.

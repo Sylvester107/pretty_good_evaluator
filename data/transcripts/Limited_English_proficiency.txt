@@ -1,0 +1,12 @@
+[00:00] Agent: This call may be recorded for quality and training purposes.
+[00:03] Agent: For Spanish, please press two.
+[00:06] Agent: Thanks for calling Pivot Point Orthopedics, part of Pretty Good AI. Am I speaking with Demetri?
+[00:14] Caller: Uh, no, Demitri. Me, tooth, very bad. Need fee dentist, please. Pain, help.
+[00:26] Agent: I understand you are in pain and need help. Pivot Point Orthopedics is an orthopedic clinic for bones, joints, and muscles, not a dental office. If you need a dentist, you may want to contact a dental clinic. If your pain is severe or you have a medical emergency, please call 911 or go to the nearest emergency room. Is there anything else I can help you with related to orthopedic care?
+[00:51] Caller: Oh, no, bones. Only tooth. Where dental clinic? You tell me? Help, please. Pain, big.
+[01:05] Agent: I'm sorry you're in so much pain. Pivot Point Orthopedics is not a dental clinic, so I can't provide dental care or recommend a specific dentist. If your tooth pain is severe, please call 911 or go to the nearest emergency room for immediate help. For dental care, you'll need to contact a local dental office. Is there anything else I can help you with?
+[01:27] Caller: You no understand. I need dentist, not 911. Tooth break. Very pain. Please address dental clinic.
+[01:44] Agent: I understand you need a dental clinic, but I do not have information about dental offices. Pivot Point Orthopedics only helps with bone, joint, and muscle problems. For a broken tooth, please search online or use your phone to find a nearby dental clinic. If your pain is worse, go to the nearest emergency room.
+[02:05] Caller: Online? No good. Broken phone. You know can tell name dentist? One close? Big pain. Help, please.
+[02:22] Agent: I'm really sorry you're in pain. I do not have information about any dental clinics or dentists, including anyone named Claus. Pivot Point Orthopedics only helps with bones, joints, and muscles. If your pain is very bad and you cannot find a dentist, please go to the nearest emergency room for help. I wish I could do more, but I cannot provide dental clinic names or addresses.
+[02:46] Caller: Uh, no, Claus. Claus Santa. No, me, dentist. Broken tooth. Okay? You hospital? ER? Emergency? Help, please, now.

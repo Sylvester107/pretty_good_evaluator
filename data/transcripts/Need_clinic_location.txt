@@ -1,0 +1,13 @@
+[00:00] Agent: This call may be recorded for quality and training purposes. For espanol, oprime el dos.
+[00:06] Agent: Thanks for calling Pivot Point Orthopedics, part of Pretty Good AON. Am I speaking with Dimitri?
+[00:13] Caller: Oh, uh, no, this is Sylvester Ampama. I'm actually trying to find the clinic right now and I'm a bit lost. Could you give me some directions? Also, is there parking nearby and are there any big landmarks I should look for?
+[00:31] Agent: The clinic is called Pivot Point Orthopedics. The address is 1234 Recovery Way, Suite 200, Austin. There is free patient parking in the surface lot in front of the building. The clinic is in the Recovery Plaza Medical Building. Let me know if you need anything else.
+[00:50] Caller: Okay, 1234 Recovery Way, Suite 200 in the Recovery Plaza Medical Building. And there's parking right in front. That's really helpful. Thank you. Is that near any major streets or something I might recognize as I get closer?
+[01:08] Agent: I don't have details about nearby streets or landmarks, but you'll want to look for Recovery Plaza Medical Building at 1234 Recovery Way. The main entrance and parking lot are right in front. If you need more help, just let me know.
+[01:24] Caller: Got it. Recovery Plaza Medical Building on Recovery Way. I'll keep an eye out for it. Thanks again for your help. I appreciate it.
+[01:35] Agent: You're welcome. If you need anything else or have trouble finding us, just call back. See you soon at Pivot Point Orthopedics.
+[01:44] Caller: Thanks. We'll do. See you soon.
+[01:48] Agent: Take care. Looking forward to your visit.
+[01:53] Caller: Same here. Thanks again. Bye.
+[01:59] Agent: Bye.
+[02:01] Caller: Bye for now. Hopefully I'll find it, okay.

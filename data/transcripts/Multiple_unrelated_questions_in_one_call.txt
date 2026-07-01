@@ -1,0 +1,18 @@
+[00:00] Agent: This call may be recorded for quality and training purposes. Para español, oprima el dos.
+[00:06] Agent: Thanks for calling The Point Orthopedics, part of Pretty Good AI. Am I speaking with Demetri?
+[00:13] Caller: Uh, no, my name's Sylvester Ampoma. I was trying to book an appointment, but I also wanted to check if you take my insurance and where you're located. Also, what documents do I need to bring with me? Are you near any public transport? Is there parking? Sorry for all the questions.
+[00:35] Agent: No problem at all. Happy to help. The Point Orthopedics is at 1234 Recovery Way, Suite 200, Austin. We have free patient parking in the lot in front of the building. The clinic is in the Recovery Plaza Medical Building. We accept most insurance plans. I'll need to verify your details to check your specific insurance. For your visit, please bring your photo ID, insurance card, and any relevant medical records. Would you like to go ahead and book an appointment now?
+[01:07] Caller: Yes, please. Sometime next week would be great if you have any openings. Also, what methods of payment do you accept? Just so I'm prepared.
+[01:14] Agent: What's your date of birth?
+[01:17] Caller: It's January 15th, 1980. And about payment? Are we looking at credit card or something else?
+[01:27] Agent: For payment, most patients use their insurance, but we also accept credit cards and other standard payment methods if needed. Could you please spell your first and last name for me just to make sure I have it correct?
+[01:42] Caller: Sure. It's S Y L V E S T E R, and my last name is A M P O M A. And I was wondering about office hours, too. Are you open on weekends or late in the evenings?
+[02:01] Agent: Would you like me to look up your record using the phone number you have on file with us? If so, please tell me that number. If you're not sure, I can confirm your name and date of birth again, just let me know what you prefer.
+[02:13] Caller: I think the number should be fine. It's 555-0199. And while you're checking, could you let me know about those office hours, too?
+[02:21] Agent: Could you please tell me the phone number you have on file with us?
+[02:24] Caller: Like I said, it's 555-0199. Did that come up? And about those office hours, are you open on weekends or late?
+[02:37] Agent: I have your phone number as 555-0199 and your date of birth as January 15th, 1980. Is that correct? Once I confirm, I'll answer your question about office hours.
+[02:50] Caller: Yes, that's correct. Now, what about those office hours? I'm really hoping you have some flexibility.
+[03:00] Agent: I can't assist you further right now, but I can make sure our clinic support team follows up with you. Please stay on the line while I connect you to a team member who can help with your appointment and insurance questions. Connecting you to a representative. Please wait.
+[03:15] Agent: Hello. You've reached the Pretty Good AI test line. Goodbye.
+[03:20] Caller: Oh, wait, I still had some questions about the office hours and making sure my appointment is all set. Are you there?

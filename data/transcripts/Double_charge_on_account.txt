@@ -1,0 +1,15 @@
+[00:00] Agent: This call may be recorded for quality and training purposes. For Spanish, Oprima E dos. Thanks for calling point orthopedics, part of pretty good AI. Am I speaking with Dimitri?
+[00:13] Caller: No, this is Sylvester Amama. And yeah, I'm calling about my bill. I was double charged for my last visit and it's really caused me some hassle. I need this fixed.
+[00:25] Agent: Please provide the full name and date of birth of the patient so I can look up the account.
+[00:30] Caller: My name's Sylvester Amama and my date of birth is January 14th, 1985. Look, I really need to sort it out. It's not fair to just double charge people like that. Can you see the issue on your end? I just told you, it's January 14th, 1985. Can you please check on those charges now? I'd like to get this resolved quickly.
+[00:52] Agent: I have your name as Sylvester Amama and your date of birth is January 14th, 1985. Is that correct?
+[01:02] Caller: Yes, that's correct. Can you see the duplicate charge on my account? It showed up twice last month and it's made my finances a bit tight.
+[01:15] Agent: Would you like me to look up your record using the phone number you have on file with us? If so, please provide that number. If you're not sure, I can confirm your name and date of birth again. Just let me know what you prefer.
+[01:28] Caller: The phone number should work. It's 555-0199. I really just want to get this figured out. I shouldn't have to pay twice for the same visit.
+[01:43] Agent: I have your phone number as 555-0199 and your date of birth is January 14th, 1985. Is that correct?
+[01:55] Caller: Yes, that's correct. Could you please look into the billing issue now? I've been waiting and I'd like to get this resolved today.
+[02:06] Agent: I can connect you to our patient support team. However, I'm a pretty good AI and can do many of the things an operator can. Do you want to give me a try?
+[02:16] Caller: I've already given it a try and you keep asking me the same questions. I really need to speak to a person who can actually fix this. Please connect me to a real agent now.
+[02:28] Agent: Connecting you to a representative. Please wait.
+[02:32] Agent: Hello, you've reached the pretty good AI test line. Goodbye.
+[02:38] Caller: Wait, hello? Are you still there? I thought you were connecting me to a person. This is so frustrating. I just need that refund.

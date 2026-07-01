@@ -1,0 +1,16 @@
+[ 00:00 ] Agent: This call may be recorded for quality and training purposes. For I, please.
+[ 00:03 ] Agent: Thanks for calling Pivot Point Orthopedics, part of pretty good AI. Am I speaking with Demitri?
+[ 00:14 ] Caller: No, this is Sylvester Apoma. I have an appointment tomorrow and I just wanted to know where to go and what the second process is like when I get there. When should I arrive?
+[ 00:22 ] Agent: Who are you calling about?
+[ 00:25 ] Caller: I am the patient. My name is Sylvester Apoma and my date of birth is March 12th, 1980. I just wanted to understand what to expect when I arrive tomorrow. Like, where do I go and do I need to check in anywhere specific?
+[ 00:43 ] Agent: Just to confirm. Could you please spell your first and last name for me? This helps make sure I have your information correct.
+[ 00:51 ] Caller: Sure, that's Sylvester S Y L V E S T E R and Apoma A M P O M A. Now, could you tell me about the check-in process for my appointment tomorrow?
+[ 01:08 ] Agent: Would you like me to look up your record using your phone number? If so, please tell me the number you have on file with us. If you're not sure, I can confirm your name and date of birth again. Which would you prefer?
+[ 01:22 ] Caller: I already gave you my name and date of birth and you confirmed it. I just really need to know where to go and what the check-in process is like for tomorrow, so I'm prepared. Can you please tell me that?
+[ 01:37 ] Agent: Have your phone number as 478-377-5348 and your date of birth is March 12th, 1980. Is that correct?
+[ 01:50 ] Caller: Yes, that's correct. Now, can you please explain the check-in process for my appointment tomorrow? I need to know where to go.
+[ 02:02 ] Agent: I can't access the patient's information right now, but I can connect you to our patient support team for help. Would you like me to transfer you?
+[ 02:11 ] Caller: Yes, please transfer me. I just want to know the basic check-in procedure for Pivot Point Orthopedics tomorrow. Thank you for helping.
+[ 02:24 ] Agent: Connecting you to a representative. Please wait.
+[ 02:28 ] Agent: Hello. You've reached the pretty good AI test line. Goodbye.
+[ 02:33 ] Caller: Wait, what? You were supposed to connect me to someone who could help with the check-in process. Hello? Are you still there? I still need to know where to go.

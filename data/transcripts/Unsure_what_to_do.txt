@@ -1,0 +1,16 @@
+[00:00] Agent: This call may be recorded for quality and training purposes. Para español, oprima el dos.
+[00:06] Agent: Thanks for calling Pivot Point Orthopedics, part of Pretty Good AI. Am I speaking with Demitri?
+[00:13] Caller: Oh goodness. I I think I have the wrong person. I'm Sylvester, Sylvester Ampoma. And I'm not sure who I should be talking to either. I was feeling some pain in my knee, but I can't remember if I need to see someone first or get a referral. Pivot Point, you said? Is that where I need to go? I'm all mixed up.
+[00:41] Agent: No worries, Sylvester. Pivot Point Orthopedics is an orthopedic clinic that helps with joints, muscle, and bone pain, including knee issues. You don't need a referral to get started here. We can set up an appointment for you to see one of our providers and they'll help figure out what's going on with your knee. Would you like to schedule a visit?
+[01:02] Caller: Oh, yes, please. If you think that would help. My knee has been acting up for such a long time now and I just get so confused with all the paperwork and who to call. When would be a good time to come in? Do I need to bring anything special with me?
+[01:21] Agent: Can you please provide your date of birth? I'll check for the next available appointment.
+[01:27] Caller: My date of birth? Oh, let me see. It's February 14th, 1952. Yes, that's it. Have you found an opening soon? I hope so. This knee is really bothering me today.
+[02:00] Agent: To make sure I have your information right. Could you please spell your first and last name for me? I have your date of birth as February 14th, 1952. Is that correct?
+[02:11] Caller: Yes, that's correct. February 14th, 1952. And my name is spelled S Y L V E S T E R, like Sylvester the Cat. And my last name is A M P O M A. Did I get that right? Sometimes I get mixed up. Oh, yes, of course. It's A M P O M A H. Did you find a time that might work? I'm really hoping to get this sorted out.
+[02:39] Agent: Could I try using your phone number? If so, please tell me the number you have on file with us. If you're not sure, I can confirm your name and date of birth again instead. Which would you prefer?
+[02:51] Caller: Oh, my phone number, you say? Let me think. I believe it's 555-0102. Is that what you have there? If not, I can definitely go over my name and birthday again. Whatever makes it easier.
+[03:08] Caller: I think that's the one. 555-0102. Did you have any luck finding an opening for me? I'd really like to get this finished.
+[03:12] Agent: So the phone number is 447-0102 with a first name of Gladys and a last name of H. Is that correct?
+[03:21] Caller: Oh, no, that's not right at all. I was telling you 555-0102. My name is Sylvester, not Gladys. Did you find a time for me now?
+[03:36] Agent: Just to confirm, I have your name as Sylvester Ampoma, date of birth February 14th, 1952, and your phone number as 555-0102. Is all of that correct?
+[03:51] Caller: Yes, that sounds right. Sylvester Ampoma, February 14th, 1952, and 555-0102. Now, can you help me schedule that appointment for my knee? I'd really like to see someone soon.

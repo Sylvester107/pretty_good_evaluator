@@ -1,0 +1,7 @@
+[00:00] Agent: This call may be recorded for quality and training purposes. For Spanish, press two.
+[00:06] Agent: Thanks for calling Tivitt Point Orthopedics, part of Pretty Good AI. Am I speaking with Demitri?
+[00:14] Caller: No, my name is Sylvester Ampoma. I have a really painful tooth and need to see a dentist. Is this the right place for that?
+[00:24] Agent: Tivitt Point Orthopedics treats joint, muscle, and bone conditions, but we don't handle dental issues. For a toothache, you'll want to contact a dental clinic. If your pain is severe or you have swelling or fever, consider reaching out to a dentist as soon as possible.
+[00:42] Caller: I understand now. Thank you. I'll get in touch with a dentist right away. Sorry for the confusion. Goodbye.
+[00:51] Agent: No problem at all. I hope you feel better soon. Take care.
+[00:56] Caller: Thank you. I appreciate that. Goodbye.

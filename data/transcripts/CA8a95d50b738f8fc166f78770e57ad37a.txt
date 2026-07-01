@@ -1,5 +1,0 @@
-[00:01] Caller: Oh, hi. Yeah, I saw that this morning and it's really not okay. I paid it once and now there's another identical charge on my card. Can you please take a look at that for me? It's really inconvenient.
-[00:14] Agent: Sure, I can take a look at it for you. Can you give me your account details?
-[00:20] Caller: Yeah, my account number is 582109. My name is Alex Miller. I just really need this second charge refunded as soon as possible. It's throwing my budget off.
-[00:31] Agent: Okay, I will check your account and then verify the double charge. I'll get back to you, okay?
-[00:37] Caller: Okay, I appreciate that. I'm just a bit frustrated that this even happened in the first place, you know? I've never had an issue before. Thanks again for looking.

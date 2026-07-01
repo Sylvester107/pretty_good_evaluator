@@ -1,0 +1,25 @@
+[00:00] Agent: This call may be recorded for quality and training purposes. Para español, oprima en dos.
+[00:06] Caller: Hi, I'm Sylvester Ampomah. I'm trying to get into my patient portal at Pivot Point Orthopedics and it's not letting me log in. I've tried resetting the password but I'm not getting the email. Could you please help me with this? I really need to check some appointment details.
+[00:21] Caller: No, this is, this is Sylvester Ampomah. I was trying to say I'm completely locked out of my account and I need help resetting my password.
+[00:29] Agent: Please provide your first name and date of birth for the patient you are calling about.
+[00:34] Caller: My name is Sylvester Ampomah and my date of birth is September 14th, 1985. Can you help me with the password? I really need to see my test results.
+[00:50] Agent: I need your full date of birth, including the year, along with your last name. Could you please provide both?
+[00:58] Caller: My last name is Ampomah and my date of birth is September 14th, 1985. Did you get that? Just really need to get into the account.
+[01:17] Agent: I have your name as Sylvester Ampima, and your date of birth as September 14th, 1985. Is that correct? If so, could you please spell your last name for me to make sure I have it right?
+[01:30] Caller: Yes, that's correct. My last name is spelled A.M.P.O.M.A.H. Can we get that password reset now? This is getting frustrating.
+[01:42] Agent: Could you please spell out your entire last name, letter by letter?
+[01:48] Caller: A.M.P.O.M.A.H. It's exactly how I spelled it before. Is there something wrong with that? I really need to sort it out.
+[02:03] Agent: Just to confirm, I have your name as Sylvester Palma and your date of birth as September 14th, 1985. Is that correct? If so, could you please spell your last name one more time, letter by letter?
+[02:17] Caller: No, it's not correct. The last name is Ampomah, with an A at the beginning. A.M.P.O.M.A.H. Sylvester Ampomah. And my date of birth is still September 14th, 1985. Can we please proceed with the password reset? I really need to access my information. A as in Apple, M as in Mary, P as in Peter, O as in Orange, M as in Mary, A as in Apple, H as in Henry. Ampomah. Can we please move on to the password reset now? I've been trying for so long. I've just spelled it out letter by letter. Did that come through correctly? Please tell me we can move forward with the reset now.
+[02:55] Agent: I already did.
+[02:55] Caller: I already did. A.M.P.O.M.A.H. Look, is there someone else I can speak to? I really need access to my account.
+[03:04] Agent: After P and O comes M.
+[03:05] Caller: After P and O comes M, then A, then H. Can we please move forward now? I've been on the line for a while.
+[03:11] Agent: The last letters are A and H.
+[03:13] Caller: Sylvester Ampomah. A.M.P.O.M.A.H. Can we proceed with the reset now? I really need to access my records.
+[03:20] Agent: Thank you. I have spelled out your entire last name for you several times.
+[03:24] Agent: A.M.P.E.M.A.
+[03:27] Caller: No, it's not. It's A.M.P.O.M.A.H. Please, can we just get this done? I really need to access my records.
+[03:37] Agent: Thank you. To confirm, your last name is spelled P.O.M.A.H. Is that correct?
+[03:46] Caller: No, that's not correct. The last name is Ampomah. A.M.P.O.M.A.H. There's an A at the beginning. I'm not sure how else to say it. Please, can you just look for that name in your system?
+[03:59] Agent: [inaudible]
